@@ -1,6 +1,2 @@
-import {createPhotos} from './data.js';
+import './createPictures.js';
 
-const PHOTOS_COUNT = 25;
-
-createPhotos(PHOTOS_COUNT);
-// console.log(createPhotos(PHOTOS_COUNT));
