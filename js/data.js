@@ -14,8 +14,8 @@ const Likes = {
 };
 
 const Comments = {
-  MIN: 0,
-  MAX: 5,
+  MIN: 5,
+  MAX: 17,
 };
 
 const COMMENTS_ID_MAX = 500;
