@@ -10,7 +10,6 @@ const renderPhotos = (data) => {
   localPhotos.push(...data.slice());
   const pictureFragment = document.createDocumentFragment();
   data.forEach(({ id, url, likes, comments }) => {
-  // data.forEach(({ id, url, likes, comments, description }) => {
     const picture = pictureTemplate.cloneNode(true);
     picture.querySelector('.picture__img').src = url;
     picture.querySelector('.picture__likes').textContent = likes;
