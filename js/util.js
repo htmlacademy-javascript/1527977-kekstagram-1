@@ -27,4 +27,6 @@ const getRandomArrayElement = (elements) => elements[getRandomInteger(0, element
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement, isEscapeKey };
+const isElementInFocus = (element) => element === document.activeElement;
+
+export { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement, isEscapeKey, isElementInFocus };

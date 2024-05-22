@@ -1,3 +1,4 @@
+import './photoLoader.js';
 import { createPhotos } from './data.js';
 import { renderPhotos } from './renderPhotos.js';
 
