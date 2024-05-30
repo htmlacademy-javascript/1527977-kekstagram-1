@@ -1,9 +1,9 @@
 import {isEscapeKey, isElementInFocus} from './util.js';
 import { pristine } from './validation.js';
 import { resetScaling } from './scale.js';
+import { resetEffects } from './slider.js';
+import { body, form } from './constants.js';
 
-const body = document.querySelector('body');
-const form = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
 const closeForm = document.querySelector('#upload-cancel');
 const textHashtags = document.querySelector('.text__hashtags');
@@ -18,6 +18,7 @@ resetScaling();
 
 uploadFile.addEventListener('change', () => {
   resetScaling();
+  resetEffects();
   form.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
