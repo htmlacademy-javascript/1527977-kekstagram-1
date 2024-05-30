@@ -1,6 +1,6 @@
 import {isEscapeKey, isElementInFocus} from './util.js';
 import { pristine } from './validation.js';
-import { resetScaling, scaling } from './scale.js';
+import { resetScaling } from './scale.js';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__overlay');
@@ -14,9 +14,10 @@ form.addEventListener('submit', (evt) => {
   pristine.validate();
 });
 
+resetScaling();
+
 uploadFile.addEventListener('change', () => {
   resetScaling();
-  scaling();
   form.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
