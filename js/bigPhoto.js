@@ -1,12 +1,13 @@
 import {isEscapeKey} from './util.js';
+import { COMMENTS_LIMIT } from './constants.js';
+import { body } from './constants.js';
+
 const bigPicture = document.querySelector('.big-picture');
-const body = document.querySelector('body');
 const bigPictureСancel = bigPicture.querySelector('.big-picture__cancel');
 const commentsList = bigPicture.querySelector('.social__comments');
 const commentsCount = bigPicture.querySelector('.social__comment-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 
-const COMMENTS_LIMIT = 5;
 let renderedComments = 0;
 let localComments = [];
 

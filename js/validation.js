@@ -1,9 +1,4 @@
-const MAX_HASHTAG_COUNT = 5;
-const MAX_DESCRIPTION_LENGTH = 140;
-
-const form = document.querySelector('.img-upload__overlay');
-
-const hashtag = /^#[a-zа-яё0-9]{1,19}$/i;
+import { form, hashtag, MAX_HASHTAG_COUNT, MAX_DESCRIPTION_LENGTH } from './constants.js';
 
 const pristine = new Pristine(form , {
   classTo: 'img-upload__field-wrapper',
