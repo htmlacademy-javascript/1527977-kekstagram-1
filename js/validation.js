@@ -1,4 +1,6 @@
-import { form, hashtag, MAX_HASHTAG_COUNT, MAX_DESCRIPTION_LENGTH } from './constants.js';
+import { hashtag, MAX_HASHTAG_COUNT, MAX_DESCRIPTION_LENGTH } from './constants.js';
+
+const form = document.querySelector('.img-upload__form');
 
 const pristine = new Pristine(form , {
   classTo: 'img-upload__field-wrapper',

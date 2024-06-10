@@ -1,6 +1,5 @@
 import {isEscapeKey} from './util.js';
 import { COMMENTS_LIMIT } from './constants.js';
-import { body } from './constants.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureСancel = bigPicture.querySelector('.big-picture__cancel');
@@ -44,14 +43,14 @@ const renderComments = () => {
 
 const closeModal = () => {
   bigPicture.classList.add('hidden');
-  body.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   renderedComments = 0;
 };
 
 const openModal = () => {
   bigPicture.classList.remove('hidden');
-  body.classList.add('modal-open');
+  document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 };
 

@@ -1,7 +1,3 @@
-export const body = document.querySelector('body');
-export const form = document.querySelector('.img-upload__overlay');
-export const imgPreview = document.querySelector('.img-upload__preview > img');
-
 export const COMMENTS_LIMIT = 5;
 export const PHOTOS_COUNT = 25;
 export const MAX_HASHTAG_COUNT = 5;

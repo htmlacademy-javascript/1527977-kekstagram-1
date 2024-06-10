@@ -1,8 +1,9 @@
-import { imgPreview, Scale } from './constants.js';
+import { Scale } from './constants.js';
 
 const imgUploadScale = document.querySelector('.img-upload__scale');
 const scaleSmaller = document.querySelector('.scale__control--smaller');
 const scaleValue = document.querySelector('.scale__control--value');
+const imgPreview = document.querySelector('.img-upload__preview > img');
 
 let localScale;
 

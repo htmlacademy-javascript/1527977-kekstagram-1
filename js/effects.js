@@ -1,8 +1,10 @@
-import { imgPreview, form, EFFECTS } from './constants.js';
+import { EFFECTS } from './constants.js';
 
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effectLevel = document.querySelector('.effect-level__value');
+const imgPreview = document.querySelector('.img-upload__preview > img');
+const form = document.querySelector('.img-upload__form');
 
 const DEFAULT_EFFECT = EFFECTS[0];
 let chosenEffect = DEFAULT_EFFECT;
@@ -18,21 +20,27 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 });
 
-const updateSlider = () => {
-  sliderElement.classList.remove('hidden');
-  sliderContainer.classList.remove('hidden');
-  sliderElement.noUiSlider.updateOptions({
-    range: {
-      min: chosenEffect.min,
-      max: chosenEffect.max,
-    },
-    step: chosenEffect.step,
-    start: chosenEffect.max,
-  });
+const resetImage = () => {
+  imgPreview.style.filter = 'none';
+  imgPreview.className = '';
+};
 
+const updateSlider = () => {
   if (isDefault()) {
     sliderElement.classList.add('hidden');
     sliderContainer.classList.add('hidden');
+    resetImage();
+  } else {
+    sliderElement.classList.remove('hidden');
+    sliderContainer.classList.remove('hidden');
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: chosenEffect.min,
+        max: chosenEffect.max,
+      },
+      step: chosenEffect.step,
+      start: chosenEffect.max,
+    });
   }
 };
 
@@ -45,8 +53,7 @@ const onFormChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
-  imgPreview.style.filter = 'none';
-  imgPreview.className = '';
+  resetImage();
   effectLevel.value = '';
   if (isDefault()) {
     return;
