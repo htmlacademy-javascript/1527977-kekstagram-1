@@ -1,9 +1,29 @@
 export const COMMENTS_LIMIT = 5;
-export const PHOTOS_COUNT = 25;
+export const PHOTOS_COUNT = 10;
 export const MAX_HASHTAG_COUNT = 5;
 export const MAX_DESCRIPTION_LENGTH = 140;
+export const BASE_URL = 'https://28.javascript.htmlacademy.pro/kekstagram';
 
 export const hashtag = /^#[a-zа-яё0-9]{1,19}$/i;
+
+export const Route = {
+  GET_DATA: '/data',
+};
+
+export const Method = {
+  POST: 'POST',
+};
+
+export const ErrorText = {
+  GET_DATA: 'Не удалось загрузить фотографии. Попробуйте обновить страницу',
+  SEND_DATA: 'Не удалось отправить форму. Попробуйте ещё раз',
+};
+
+export const Filter = {
+  DEFAULT: 'filter-default',
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed',
+};
 
 export const Scale = {
   MIN: 25,

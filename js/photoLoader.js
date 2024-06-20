@@ -2,7 +2,7 @@ import {isEscapeKey, isElementInFocus} from './util.js';
 import { pristine } from './validation.js';
 import { resetScaling } from './scale.js';
 import { resetEffects } from './effects.js';
-import { sendData } from './data.js';
+import { sendData } from './api.js';
 import { showSuccessNotice, showErrorNotice } from './notice.js';
 
 const uploadFile = document.querySelector('#upload-file');

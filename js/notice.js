@@ -33,6 +33,7 @@ const showSuccessNotice = () => {
 const showErrorNotice = () => {
   document.body.append(errorNotice);
   document.body.addEventListener('keydown', onEscDown);
+  document.body.addEventListener('click', onBodyClick);
   errorNotice.querySelector('.error__button').addEventListener('click', hideMessage);
 };
 

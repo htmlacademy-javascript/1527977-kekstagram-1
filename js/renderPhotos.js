@@ -6,6 +6,7 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 const localPhotos = [];
 
 const renderPhotos = (data) => {
+  picturesContainer.querySelectorAll('.picture').forEach((element) => element.remove());
   localPhotos.length = 0;
   localPhotos.push(...data.slice());
   const pictureFragment = document.createDocumentFragment();
