@@ -67,6 +67,8 @@ const onSliderUpdate = () => {
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
+  // form.reset();
+  document.querySelector('#effect-none').checked = true;
 };
 
 updateSlider();

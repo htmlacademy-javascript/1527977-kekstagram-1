@@ -29,4 +29,12 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const isElementInFocus = (element) => element === document.activeElement;
 
-export { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement, isEscapeKey, isElementInFocus };
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement, isEscapeKey, isElementInFocus, debounce };

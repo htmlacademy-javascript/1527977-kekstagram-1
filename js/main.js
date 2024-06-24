@@ -1,15 +1,13 @@
-import { getData, sendData } from './data.js';
+import { getData } from './api.js';
 import './photoLoader.js';
 import { renderPhotos } from './renderPhotos.js';
-import { PHOTOS_COUNT } from './constants.js';
+import { errorLoadingNotice } from './notice.js';
+import { setOnFilterClick, turnFilterOn, filterPhotos } from './filters.js';
 
-const onSendDataSuccess = () => {
-  closeModal();
+const onGetDataSuccess = (data) => {
+  turnFilterOn(data);
+  renderPhotos(filterPhotos());
+  setOnFilterClick(renderPhotos);
 };
 
-setOnFormSubmit(async (data) => {
-  await sendData(onSendDataSuccess, onSendDataError, data);
-});
-
-getData(renderPhotos);
-
+getData(onGetDataSuccess, errorLoadingNotice);

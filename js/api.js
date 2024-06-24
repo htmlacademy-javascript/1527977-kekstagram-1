@@ -1,11 +1,13 @@
+import { BASE_URL, Route, Method, ErrorText } from './constants.js';
+
 const getData = async (onSuccess, onFail) => {
   try {
     const response = await fetch(
-      'https://28.javascript.htmlacademy.pro/kekstagram/data'
+      `${BASE_URL}${Route.GET_DATA}`,
     );
 
     if (!response.ok) {
-      throw new Error('Не удалось загрузить фотографии');
+      throw new Error(ErrorText.GET_DATA);
     }
 
     const offers = await response.json();
@@ -18,15 +20,15 @@ const getData = async (onSuccess, onFail) => {
 const sendData = async (onSuccess, onFail, body) => {
   try {
     const response = await fetch(
-      'https://28.javascript.htmlacademy.pro/kekstagram/data',
+      BASE_URL,
       {
-        method: 'POST',
+        method: Method.POST,
         body,
       }
     );
 
     if (!response.ok) {
-      throw new Error('Не удалось отправить форму. Попробуйте ещё раз');
+      throw new Error(ErrorText.SEND_DATA);
     }
 
     onSuccess();
