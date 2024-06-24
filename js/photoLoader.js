@@ -4,6 +4,7 @@ import { resetScaling } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { showSuccessNotice, showErrorNotice } from './notice.js';
+import { FILE_TYPES } from './constants.js';
 
 const uploadFile = document.querySelector('#upload-file');
 const closeForm = document.querySelector('#upload-cancel');
@@ -12,6 +13,16 @@ const modal = document.querySelector('.img-upload__overlay');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 const buttonPublish = document.querySelector('.img-upload__submit');
+const imgPreview = document.querySelector('.img-upload__preview > img');
+
+const renderPreview = () => {
+  const file = uploadFile.files[0];
+  const fileName = file.name.toLowerCase();
+  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+  if (matches) {
+    imgPreview.src = URL.createObjectURL(file);
+  }
+};
 
 const closeModal = () => {
   modal.classList.add('hidden');
@@ -51,6 +62,7 @@ form.addEventListener('submit', (evt) => {
 resetScaling();
 
 uploadFile.addEventListener('change', () => {
+  renderPreview();
   resetScaling();
   resetEffects();
   modal.classList.remove('hidden');

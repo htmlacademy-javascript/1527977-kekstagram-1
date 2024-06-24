@@ -3,6 +3,7 @@ export const PHOTOS_COUNT = 10;
 export const MAX_HASHTAG_COUNT = 5;
 export const MAX_DESCRIPTION_LENGTH = 140;
 export const BASE_URL = 'https://28.javascript.htmlacademy.pro/kekstagram';
+export const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 export const hashtag = /^#[a-zа-яё0-9]{1,19}$/i;
 
