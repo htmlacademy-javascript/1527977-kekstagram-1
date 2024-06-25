@@ -1,7 +1,8 @@
 import { PHOTOS_COUNT, Filter } from './constants.js';
-import { debounce } from './util.js';
+import { debounce, toggleClass } from './util.js';
 
 const filtersElement = document.querySelector('.img-filters');
+const activeClass = 'img-filters__button--active';
 
 let currentFilter = '';
 let photos = [];
@@ -23,7 +24,7 @@ const filterPhotos = () => {
 };
 
 const turnFilterOn = (loadedPhotos) => {
-  filtersElement.classList.remove('img-filters--inactive');
+  toggleClass(filtersElement, 'img-filters--inactive');
   photos = [...loadedPhotos];
   currentFilter = Filter.DEFAULT;
 };
@@ -40,11 +41,9 @@ const setOnFilterClick = (cb) => {
     if (clickedButton.id === currentFilter) {
       return;
     }
-
-    filtersElement
-      .querySelector('.img-filters__button--active')
-      .classList.remove('img-filters__button--active');
-    clickedButton.classList.add('img-filters__button--active');
+    const activeFilter = filtersElement.querySelector(`.${activeClass}`);
+    toggleClass(activeFilter, `${activeClass}`);
+    toggleClass(clickedButton, `${activeClass}`);
     currentFilter = clickedButton.id;
     debouncedCallback(filterPhotos());
   });
