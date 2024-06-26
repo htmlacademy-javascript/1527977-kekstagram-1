@@ -80,3 +80,8 @@ export const EFFECTS = [
     unit: '',
   },
 ];
+
+export const ButtonStatus = {
+  DEFAULT: 'Опубликовать',
+  SENDING: 'Публикую...'
+};

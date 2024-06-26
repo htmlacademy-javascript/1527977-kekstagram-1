@@ -4,7 +4,7 @@ import { resetScaling } from './scale.js';
 import { resetEffects } from './effects.js';
 import { sendData } from './api.js';
 import { showSuccessNotice, showErrorNotice } from './notice.js';
-import { FILE_TYPES } from './constants.js';
+import { FILE_TYPES, ButtonStatus } from './constants.js';
 
 const uploadFile = document.querySelector('#upload-file');
 const closeForm = document.querySelector('#upload-cancel');
@@ -14,6 +14,8 @@ const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 const buttonPublish = document.querySelector('.img-upload__submit');
 const imgPreview = document.querySelector('.img-upload__preview > img');
+const defaultRadio = document.querySelector('#effect-none');
+const effectsPreviews = document.querySelectorAll('.effects__preview');
 
 const renderPreview = () => {
   const file = uploadFile.files[0];
@@ -21,6 +23,9 @@ const renderPreview = () => {
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
   if (matches) {
     imgPreview.src = URL.createObjectURL(file);
+    effectsPreviews.forEach((preview) => {
+      preview.style.backgroundImage = `url('${imgPreview.src}')`;
+    });
   }
 };
 
@@ -31,6 +36,7 @@ const closeModal = () => {
   uploadFile.value = '';
   textHashtags.value = '';
   textDescription.value = '';
+  defaultRadio.checked = true;
 };
 
 const success = () => {
@@ -42,20 +48,17 @@ const error = () => {
   showErrorNotice();
 };
 
-const blockButtonPublish = () => {
-  buttonPublish.disabled = true;
+const blockButton = (status = false) => {
+  buttonPublish.disabled = status;
+  buttonPublish.textContent = status ? ButtonStatus.SENDING : ButtonStatus.DEFAULT;
 };
 
-const unblockButtonPublish = () => {
-  buttonPublish.disabled = false;
-};
-
-form.addEventListener('submit', (evt) => {
+form.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   if(pristine.validate()){
-    blockButtonPublish();
-    sendData(success, error, new FormData(form));
-    unblockButtonPublish();
+    blockButton(true);
+    await sendData(success, error, new FormData(form));
+    blockButton();
   }
 });
 
