@@ -37,6 +37,7 @@ const closeModal = () => {
   textHashtags.value = '';
   textDescription.value = '';
   defaultRadio.checked = true;
+  pristine.reset();
 };
 
 const success = () => {
